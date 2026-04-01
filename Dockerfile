@@ -12,7 +12,17 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+# create env
+RUN cp .env.example .env
+
+# generate key
+RUN php artisan key:generate
+
+# create sqlite db
 RUN mkdir -p database && touch database/database.sqlite
+
+# run migrations
+RUN php artisan migrate
 
 EXPOSE 10000
 

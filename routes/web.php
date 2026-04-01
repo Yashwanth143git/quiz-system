@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 
+use App\Models\Quiz;
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/quizzes');
 });
 
 Route::get('/quiz/create', [QuizController::class, 'create']);

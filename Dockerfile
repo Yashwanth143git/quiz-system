@@ -3,7 +3,7 @@ FROM php:8.2-cli
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev zip \
+    git unzip libzip-dev zip sqlite3 libsqlite3-dev \
     && docker-php-ext-install zip pdo pdo_sqlite
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
